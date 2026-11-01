@@ -1,0 +1,12 @@
+{
+  "name": "mindful-streak",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A gentle mental wellness habit tracker",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

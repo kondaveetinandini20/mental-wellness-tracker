@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7f2">
+    <meta name="description" content="Build gentle mental wellness habits, one day at a time.">
+    <title>Mindful — your little steps, adding up</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div id="auth-screen" class="auth-screen" hidden>
+      <div class="auth-decoration" aria-hidden="true">
+        <span class="auth-sun"></span>
+        <span class="auth-leaf leaf-one">✳</span>
+        <span class="auth-leaf leaf-two">✿</span>
+      </div>
+      <main class="auth-card">
+        <a class="brand auth-brand" href="/" aria-label="Mindful home">
+          <span class="brand-mark">m</span><span>mindful</span>
+        </a>
+        <p class="eyebrow">A LITTLE SPACE FOR YOU</p>
+        <h1 id="auth-title">Welcome back</h1>
+        <p id="auth-description" class="muted">Pick up where you left off. Your progress is waiting.</p>
+        <div id="auth-error" class="form-error" role="alert" hidden></div>
+        <form id="auth-form">
+          <label id="name-field" class="field" hidden>
+            <span>Your name</span>
+            <input name="name" autocomplete="name" maxlength="50" placeholder="How should we call you?">
+          </label>
+          <label class="field">
+            <span>Email address</span>
+            <input name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com">
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input name="password" type="password" autocomplete="current-password" required minlength="10" maxlength="200" placeholder="At least 10 characters">
+          </label>
+          <button id="auth-submit" class="button button-primary button-wide" type="submit">Sign in</button>
+        </form>
+        <p class="auth-switch"><span id="auth-switch-copy">New to mindful?</span> <button id="auth-switch" class="text-button" type="button">Create an account</button></p>
+        <p class="auth-note">Your account is private. Your password is never stored in plain text.</p>
+      </main>
+    </div>
+
+    <div id="app-shell" class="app-shell" hidden>
+      <aside class="sidebar">
+        <a class="brand" href="#" data-nav="today">
+          <span class="brand-mark">m</span><span>mindful</span>
+        </a>
+        <div class="sidebar-label">YOUR SPACE</div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-link active" type="button" data-nav="today"><span>☀</span> Today</button>
+          <button class="nav-link" type="button" data-nav="habits"><span>🌱</span> My habits</button>
+          <button class="nav-link" type="button" data-nav="insights"><span>◷</span> My progress</button>
+          <button class="nav-link" type="button" data-nav="community"><span>♡</span> Buddies</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="sidebar-quote">
+            <span class="quote-sparkle">✳</span>
+            <p>You don't have to see the whole staircase. Just take the first step.</p>
+            <span class="quote-credit">— Martin Luther King Jr.</span>
+          </div>
+          <button class="nav-link settings-link" type="button" data-nav="settings"><span>⚙</span> Settings</button>
+          <div id="sidebar-profile" class="sidebar-profile"></div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <button id="mobile-menu" class="icon-button mobile-menu" type="button" aria-label="Open navigation">☰</button>
+          <div id="topbar-date" class="topbar-date"></div>
+          <div class="topbar-actions">
+            <div class="level-chip"><span>✦</span> <span id="topbar-level">Level 1</span></div>
+            <button id="theme-toggle" class="icon-button" type="button" aria-label="Toggle dark mode">☾</button>
+            <button id="profile-button" class="avatar-button" type="button" aria-label="Open settings"></button>
+          </div>
+        </header>
+        <div id="page-content" class="page-content"></div>
+      </main>
+    </div>
+
+    <dialog id="habit-dialog" class="modal">
+      <form id="habit-form" method="dialog">
+        <div class="modal-heading">
+          <div><p class="eyebrow">MAKE IT YOURS</p><h2 id="habit-dialog-title">Add a habit</h2></div>
+          <button class="icon-button" type="button" data-close-dialog aria-label="Close">×</button>
+        </div>
+        <label class="field"><span>Habit name</span><input name="name" required maxlength="50" placeholder="e.g. Read a few pages"></label>
+        <div class="form-row">
+          <label class="field"><span>Icon</span><input name="icon" maxlength="4" value="🌿" aria-label="Habit icon"></label>
+          <label class="field"><span>Daily goal</span><input name="target" type="number" min="1" max="10000" value="10" required></label>
+          <label class="field"><span>Unit</span><input name="unit" maxlength="20" value="min" required></label>
+        </div>
+        <p id="habit-goal-note" class="field-help" hidden>Daily goals are kept the same after a habit has progress, so your history stays meaningful.</p>
+        <label class="field"><span>Color</span>
+          <select name="color">
+            <option value="sage">Sage</option><option value="sky">Sky</option><option value="lavender">Lavender</option>
+            <option value="peach">Peach</option><option value="rose">Rose</option><option value="gold">Sunshine</option>
+          </select>
+        </label>
+        <label class="field"><span>Daily reminder <small>(optional)</small></span><input name="reminder" type="time"></label>
+        <div class="modal-actions"><button class="button button-quiet" type="button" data-close-dialog>Cancel</button><button class="button button-primary" type="submit">Save habit</button></div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
